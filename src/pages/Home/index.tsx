@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
-import type { Product } from "../types/product"
-import { getProducts } from "../api/products"
-import { ProductCard } from "../components/ProductCard"
+import type { Product } from "../../types/product"
+import { getProducts } from "../../api/products"
+import { ProductCard } from "../../components/ProductCard"
 
 import styles from './Home.module.css'
 

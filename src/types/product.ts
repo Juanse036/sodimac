@@ -15,6 +15,9 @@ export interface Product {
   mediaUrls: string[]; 
   prices: ProductPrice[];
   model: string;
+  badges: { type: string; value: string }[];
+  totalReviews?:string;
+  rating?:string;
   highlights?: { key: string; value: string }[];
 }
 

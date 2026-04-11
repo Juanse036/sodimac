@@ -1,0 +1,185 @@
+.pageContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.backButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  color: #333;
+}
+
+.productDetail {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .productDetail {
+        grid-template-columns: 1.5fr 1fr;
+    }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.brand {
+  font-size: 14px;
+  color: #666;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.model {
+  font-size: 14px;
+  color: #555;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.priceContainer {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.discountBadge {
+  background: #e60023;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.currency {
+  font-size: 18px;
+}
+
+.amount {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111;
+}
+
+.unit {
+  font-size: 14px;
+  color: #666;
+}
+
+
+.oldPrice {
+  font-size: 14px;
+  color: #666;
+}
+
+.oldLabel {
+  margin-right: 5px;
+}
+
+.oldValue {
+  text-decoration: line-through;
+  color: #999;
+}
+
+
+.highlights {
+  margin-top: 5px;
+}
+
+.highlightsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #eee;
+}
+
+.highlightItem {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+}
+
+.highlightKey {
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.highlightValue {
+  font-size: 14px;
+  color: #555;
+}
+
+
+.quantityContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.quantityButton {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.quantityValue {
+  min-width: 20px;
+  text-align: center;
+}
+
+
+.addToCart {
+  padding: 12px;
+  background: #0070f3;
+  color: white;
+  border: none;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.addToCart:hover {
+  background: #0059c1;
+}
+

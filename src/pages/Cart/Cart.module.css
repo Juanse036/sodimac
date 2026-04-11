@@ -1,0 +1,165 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+@media (min-width: 992px) {
+  .layout {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.emptyCart {
+  text-align: center;
+  padding: 50px;
+}
+
+.emptyCart button {
+  background: #f00;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* Lista de productos */
+.cartList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cartItem {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.itemImage {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.itemInfo {
+  flex: 1;
+}
+
+.itemInfo h3 {
+  font-size: 16px;
+  margin: 0 0 5px 0;
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  color: #004b91;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 0;
+  margin-top: 10px;
+}
+
+/* Resumen de compra */
+.summaryCard {
+  background: #f9f9f9;
+  padding: 25px;
+  border-radius: 8px;
+  height: fit-content;
+  position: sticky;
+  top: 90px;
+}
+
+.summaryCard h2 {
+  font-size: 20px;
+  margin-top: 0;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 15px;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  font-size: 16px;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px solid #ddd;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.checkoutBtn {
+  width: 100%;
+  background: #f00;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 4px;
+  margin-top: 25px;
+  cursor: pointer;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.label {
+  font-size: 14px;
+  color: #666;
+}
+
+.selector {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+}
+
+.qtyBtn {
+  background: none;
+  border: none;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qtyBtn:hover {
+  background-color: #f4f4f4;
+}
+
+.qtyValue {
+  width: 30px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+}

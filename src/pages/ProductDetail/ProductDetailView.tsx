@@ -1,7 +1,7 @@
 import type { Product } from '../../types/product';
 import { useNavigate } from 'react-router-dom';
 import styles from './ProductDetail.module.css'
-import { Carousel } from '../../components/Carousel';
+import { Carousel } from './components/Carousel';
 
 import { useState } from "react"
 

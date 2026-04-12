@@ -2,8 +2,10 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import styles from './Cart.module.css';
 
+import { generarArchivoPedido } from '../../utils/downloadJson';
+
 export const Cart = () => {
-    const { cart, removeFromCart, updateQuantity } = useCart();
+    const { cart, cartCount, removeFromCart, updateQuantity } = useCart();
     const navigate = useNavigate();
 
     const calculateTotal = () => {
@@ -13,46 +15,49 @@ export const Cart = () => {
         }, 0);
     };
 
+    const handleFinalizar = () => {
+        generarArchivoPedido(cart);
+    };
+
     if (cart.length === 0) {
         return (
             <div className={styles.emptyCart}>
                 <h2>Tu carrito está vacío</h2>
                 <p>¡Explora nuestros productos y encuentra lo que necesitas!</p>
-                <button onClick={() => navigate('/')}>Ir a la tienda</button>
+                <button className={styles.button} onClick={() => navigate('/')}>Ir a la tienda</button>
             </div>
         );
     }
 
     return (
         <main className={styles.container}>
-            <h1 style={{ marginBottom: '30px' }}>Carro de Compras</h1>
+            <h1 style={{ marginBottom: '30px' }}>Carrito de Compras</h1>
 
             <div className={styles.layout}>
-                {/* Lado Izquierdo: Items */}
                 <section className={styles.cartList}>
                     {cart.map((product) => (
-                        <article key={product.productId} className={styles.cartItem} onClick={() => navigate(`/product/${product.productId}`, { state: { product } })}>
+                        <article key={product.productId} className={styles.cartItem} >
                             <img
                                 src={product.mediaUrls[0]}
                                 alt={product.displayName}
                                 className={styles.itemImage}
                             />
                             <div className={styles.itemInfo}>
-                                <span>{product.brand}</span>
+                                <span className={styles.brand}>{product.brand}</span>
                                 <h3>{product.displayName}</h3>
                                 <div className={styles.quantityControls}>
                                     <span className={styles.label}>Cantidad:</span>
                                     <div className={styles.selector}>
                                         <button
                                             onClick={() => updateQuantity(product.productId, product.quantity - 1)}
-                                            className={styles.qtyBtn}
+                                            className={styles.quantityBtn}
                                         >
                                             −
                                         </button>
-                                        <span className={styles.qtyValue}>{product.quantity}</span>
+                                        <span className={styles.quantityValue}>{product.quantity}</span>
                                         <button
                                             onClick={() => updateQuantity(product.productId, product.quantity + 1)}
-                                            className={styles.qtyBtn}
+                                            className={styles.quantityBtn}
                                         >
                                             +
                                         </button>
@@ -70,23 +75,22 @@ export const Cart = () => {
                     ))}
                 </section>
 
-                {/* Lado Derecho: Resumen */}
                 <aside className={styles.summaryCard}>
                     <h2>Resumen de la compra</h2>
-                    <div className={styles.summaryRow}>
-                        <span>Productos ({cart.length})</span>
+                    <div className={styles.summaryItem}>
+                        <span>Productos ({cartCount})</span>
                         <span>${calculateTotal().toLocaleString('es-CO')}</span>
                     </div>
-                    <div className={styles.summaryRow}>
+                    <div className={styles.summaryItem}>
                         <span>Envío</span>
                         <span style={{ color: '#00a650', fontWeight: 'bold' }}>Gratis</span>
                     </div>
-                    <div className={styles.totalRow}>
+                    <div className={styles.totalCart}>
                         <span>Total</span>
                         <span>${calculateTotal().toLocaleString('es-CO')}</span>
                     </div>
-                    <button className={styles.checkoutBtn}>
-                        Ir a pagar
+                    <button className={styles.button} onClick={handleFinalizar}>
+                        Finalizar Compra
                     </button>
                 </aside>
             </div>

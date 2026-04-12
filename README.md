@@ -1,73 +1,53 @@
-# React + TypeScript + Vite
+Prueba Desarrollador Front End - SODIMAC
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+- Procedimiento para ejecutar la aplicación 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+git clone [https://github.com/Juanse036/sodimac]
+cd [sodimac]
 
-## React Compiler
+npm install
+npm run dev
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+La aplicación estará disponible en http://localhost:5173.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Decisiones Técnicas Tomadas
+Para este desarrollo, se priorizó una arquitectura escalable y mantenible:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. React Context API para el Estado Global
+Se implementó un CartProvider para gestionar el estado del carrito. Esto permite que el Navbar, ProductDetail y Cart estén siempre sincronizados.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2. Persistencia en LocalStorage
+Para cumplir con el requerimiento de "guardar en memoria al cerrar el aplicativo", el estado inicial del carrito consulta el localStorage y cada cambio se persiste mediante un useEffect, garantizando que el usuario no pierda su selección al refrescar o cerrar la pestaña.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. Estilos
+Se optó por CSS Modules para garantizar el encapsulamiento de estilos. Esto evita colisiones de clases y facilita el mantenimiento a largo plazo, permitiendo que cada página y componente tenga sus propias reglas de diseño aisladas.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+4. TypeScript
+El uso de interfaces para los productos y el estado del carrito previene errores en tiempo de desarrollo y facilita la integración con la API, asegurando que los datos (como precios y URLs de imágenes) se manejen correctamente en toda la app.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+5. Exportación de Datos (JSON)
+Se desarrolló una utilidad nativa en JS para generar y descargar un archivo JSON con el resumen del pedido.
+
+6. UX y Manejo de Errores
+Se incluyeron estados de carga (Loader), páginas de error 404 y un flujo de "Producto no encontrado" para asegurar que el usuario nunca se sienta perdido ante una URL inválida.
+
+
+Stack Tecnológico
+El proyecto ha sido desarrollado siguiendo estrictamente las versiones y herramientas solicitadas en el requerimiento técnico:
+
+React 17.0.2: Se garantizó la compatibilidad de los componentes y hooks con esta versión específica.
+
+Node 14.18.1: El entorno de ejecución y la gestión de dependencias se alinearon con esta versión de Node.
+
+TypeScript: Se utilizó para el tipado estático de todo el flujo de datos del carrito y catálogo.
+
+Vite: Se configuró como herramienta de construcción y servidor de desarrollo para asegurar un entorno ágil y moderno.
+
+Desarrollado por: 
+Juan  Sebastian García
+Desarrollador Front End
+tel: 3112551755
+Correo: juansebas036@gmail.com

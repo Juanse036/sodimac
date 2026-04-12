@@ -43,6 +43,10 @@ El proyecto ha sido desarrollado siguiendo estrictamente las versiones y herrami
 - **Vite**: Se configuró como herramienta de construcción y servidor de desarrollo para asegurar un entorno ágil y moderno.
 
 ---
+✅ **Testeada exitosamente en:**
+- Node **14.18.1** (versión requerida)
+- Node **22.21.0** (versión moderna)
+---
 
 **Desarrollado por:**  
 **Juan Sebastián García**  

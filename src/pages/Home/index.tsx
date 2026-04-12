@@ -30,11 +30,11 @@ export const Home = () => {
         fetchProducts()
     }, [])
 
+    if (loading) return <Loader />
+
     return (
         <main>
             <h1 className={styles.title}>Lista de productos</h1>
-
-            {loading && <Loader />}
             {error && <p>{error}</p>}
 
             {!loading && !error && products.length === 0 && (

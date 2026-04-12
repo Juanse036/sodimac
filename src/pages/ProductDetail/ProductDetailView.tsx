@@ -4,6 +4,7 @@ import styles from './ProductDetail.module.css'
 import { Carousel } from './components/Carousel';
 
 import { useState } from "react"
+import { useCart } from '../../context/CartContext';
 
 interface ProductDetailViewProps {
     product: Product
@@ -11,15 +12,16 @@ interface ProductDetailViewProps {
 
 export const ProductDetailView = ({ product }: ProductDetailViewProps) => {
     const navigate = useNavigate();
+    const { addToCart } = useCart();
 
-    const [quantity, setQuantity] = useState(0)
+    const [quantity, setQuantity] = useState(1)
 
     const internetPrice = product.prices.find(p => p.type === 'INTERNET');
     const normalPrice = product.prices.find(p => p.type === 'NORMAL');
     const discountBadge = product.badges.find(b => b.type === 'DISCOUNT');
 
     const mainPrice = internetPrice || normalPrice || product.prices[0];
-
+    const ratingValue = Number(product.rating) || 0;
 
     return (
         <main className={styles.pageContainer}>
@@ -39,14 +41,14 @@ export const ProductDetailView = ({ product }: ProductDetailViewProps) => {
                         <div className={styles.model} >
                             <span>Modelo: {product.model}</span>
                             <span> | </span>
-                            <span>SKU: {product.productId}</span>
+                            <span>Código: {product.productId}</span>
                         </div>
                     </div>
                     {product.rating &&
                         <div className={styles.rating}>
                             <span >
-                                {'★'.repeat(Math.round(Number(product.rating)))}
-                                {'☆'.repeat(5 - Math.round(Number(product.rating)))}
+                                {'★'.repeat(Math.round(ratingValue))}
+                                {'☆'.repeat(5 - Math.round(ratingValue))}
                             </span>
                             <span >
                                 {product.rating} ({product.totalReviews})
@@ -62,8 +64,7 @@ export const ProductDetailView = ({ product }: ProductDetailViewProps) => {
                         )}
 
                         <div className={styles.price}>
-                            <span className={styles.currency}>{mainPrice.symbol}</span>
-                            <span className={styles.amount}>{mainPrice.price}</span>
+                            <span className={styles.priceText}>{mainPrice.symbol} {mainPrice.price}</span>
                             <span className={styles.unit}>{mainPrice.unit}</span>
                         </div>
 
@@ -78,13 +79,13 @@ export const ProductDetailView = ({ product }: ProductDetailViewProps) => {
                     </div>
 
                     <div className={styles.highlights}>
-                        <h3 className={styles.highlightsTitle}>
+                        <h3>
                             Especificaciones principales
                         </h3>
 
                         <ul className={styles.highlightsList}>
-                            {product.highlights?.map((item, index) => (
-                                <li key={index} className={styles.highlightItem}>
+                            {product.highlights?.map((item) => (
+                                <li key={`${item.key}-${item.value}`} className={styles.highlightItem}>
                                     <span className={styles.highlightKey}>{item.key}</span>
                                     <span className={styles.highlightValue}>{item.value}</span>
                                 </li>
@@ -98,7 +99,12 @@ export const ProductDetailView = ({ product }: ProductDetailViewProps) => {
                         <span className={styles.quantityValue}>{quantity}</span>
                         <button className={styles.quantityButton} onClick={() => setQuantity(q => q + 1)}>+</button>
 
-                        <button className={styles.addToCart}>Agregar al Carrito</button>
+                        <button
+                            className={styles.addToCart}
+                            onClick={() => addToCart(product, quantity)}
+                        >
+                            Agregar al Carrito
+                        </button>
                     </div>
                 </section>
             </div>

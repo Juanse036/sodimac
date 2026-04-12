@@ -1,15 +1,12 @@
 .pageContainer {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
+    font-family: sans-serif;
 }
 
 .backButton {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background: transparent;
+  margin-bottom: 10px;
+  margin-top: 20px;  
   border: none;
   font-size: 14px;
   cursor: pointer;
@@ -20,7 +17,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 40px;
-    padding: 40px;
+    padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -34,7 +31,6 @@
 .info {
   display: flex;
   flex-direction: column;
-  gap: 12px;
 }
 
 .brand {
@@ -84,11 +80,8 @@
   gap: 4px;
 }
 
-.currency {
-  font-size: 18px;
-}
 
-.amount {
+.priceText {
   font-size: 32px;
   font-weight: 700;
   color: #111;

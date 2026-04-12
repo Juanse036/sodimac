@@ -3,15 +3,14 @@
     padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
     font-family: sans-serif;
-    border: 1px solid #f3f3f3;
+    border: 1px solid #dedede;
 }
 
 .card:hover {
     transform: scale(1.02);
-    cursor: pointer;
-    border-color: #999;
+    cursor: pointer;    
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .imageContainer {
@@ -32,7 +31,6 @@
     font-weight: 600;
 }
 
-
 .title {
     color: #333;
     font-size: 16px;
@@ -45,19 +43,16 @@
     margin-bottom: 4px;
 }
 
-
 .priceValue {
     font-size: 20px;
     font-weight: bold;
     color: #000;
 }
 
-
-
-.Button {
+.button {
     margin-top: auto;
     width: 100%;
-    background-color: #f00;
+    background-color: #0070f3;
     color: #fff;
     font-weight: bold;
     padding: 10px;
@@ -67,6 +62,6 @@
     transition: background-color 0.2s;
 }
 
-.Button:hover {
-    background-color: #c00;
+.button:hover {
+    background-color: #0059c1;
 }

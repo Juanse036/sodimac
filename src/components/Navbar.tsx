@@ -19,7 +19,7 @@ export const Navbar = () => {
         
         <div className={styles.cartContainer} onClick={() => navigate('/cart')}>
           <span className={styles.cartIcon}>🛒</span>
-          <span className={styles.link}>MI CARRO</span>
+          <span className={styles.link}>MI CARRITO</span>
             <div className={styles.cartBadge}>{cartCount}</div>
         </div>
       </div>

@@ -1,0 +1,54 @@
+.popupOverlay {
+  position: fixed;
+  font-family: sans-serif;
+  top: 20px;
+  right: 20px;
+  z-index: 2000;
+  animation: slideIn 0.3s ease-out;
+}
+
+.popupContent {
+  background-color: #fff;
+  border-left: 5px solid #00a650; /* Verde éxito */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 15px 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 300px;
+}
+
+.icon {
+  background: #00a650;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.message p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #333;
+  text-overflow: ellipsis;
+}
+
+.viewCartBtn {
+  background: none;
+  border: none;
+  color: #0070f3;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}

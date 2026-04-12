@@ -19,20 +19,10 @@
 
 .emptyCart {
   text-align: center;
+  font-family: sans-serif;
   padding: 50px;
 }
 
-.emptyCart button {
-  background: #f00;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-/* Lista de productos */
 .cartList {
   display: flex;
   flex-direction: column;
@@ -43,7 +33,7 @@
   display: flex;
   gap: 20px;
   padding: 20px;
-  border: 1px solid #eee;
+  border: 1px solid #d8d8d8;
   border-radius: 8px;
   align-items: center;
 }
@@ -54,13 +44,22 @@
   object-fit: contain;
 }
 
+
+
 .itemInfo {
   flex: 1;
 }
 
+
 .itemInfo h3 {
   font-size: 16px;
   margin: 0 0 5px 0;
+}
+
+.brand {
+    color: #767676;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 .removeBtn {
@@ -74,31 +73,22 @@
   margin-top: 10px;
 }
 
-/* Resumen de compra */
-.summaryCard {
-  background: #f9f9f9;
-  padding: 25px;
-  border-radius: 8px;
-  height: fit-content;
-  position: sticky;
-  top: 90px;
-}
+
 
 .summaryCard h2 {
-  font-size: 20px;
   margin-top: 0;
   border-bottom: 1px solid #ddd;
   padding-bottom: 15px;
 }
 
-.summaryRow {
+.summaryItem {
   display: flex;
   justify-content: space-between;
   margin: 15px 0;
   font-size: 16px;
 }
 
-.totalRow {
+.totalCart {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
@@ -108,7 +98,7 @@
   font-weight: bold;
 }
 
-.checkoutBtn {
+.button {
   width: 100%;
   background: #f00;
   color: white;
@@ -121,11 +111,15 @@
   cursor: pointer;
 }
 
+.button:hover{
+  background:rgb(219, 1, 1)0;
+}
+
 .quantityControls {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 10px 0;
+  margin-top:10px;
 }
 
 .label {
@@ -138,26 +132,21 @@
   align-items: center;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background: white;
 }
 
-.qtyBtn {
-  background: none;
+.quantityBtn {
   border: none;
   width: 30px;
   height: 30px;
   cursor: pointer;
   font-size: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.qtyBtn:hover {
-  background-color: #f4f4f4;
+.quantityBtn:hover {
+  background-color: #e2e2e2;
 }
 
-.qtyValue {
+.quantityValue {
   width: 30px;
   text-align: center;
   font-weight: bold;

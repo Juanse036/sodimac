@@ -1,10 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.css';
 
+import { useCart } from '../context/CartContext';
+
 export const Navbar = () => {
   const navigate = useNavigate();
 
-  const cartCount = 0;
+  const { cartCount } = useCart();
 
   return (
     <nav className={styles.navbar}>
@@ -18,9 +20,7 @@ export const Navbar = () => {
         <div className={styles.cartContainer} onClick={() => navigate('/cart')}>
           <span className={styles.cartIcon}>🛒</span>
           <span className={styles.link}>MI CARRO</span>
-          {cartCount > 0 && (
             <div className={styles.cartBadge}>{cartCount}</div>
-          )}
         </div>
       </div>
     </nav>

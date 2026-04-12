@@ -2,32 +2,53 @@ import { useState, useEffect } from "react"
 import type { Product } from "../../types/product"
 import { getProducts } from "../../api/products"
 import { ProductCard } from "../../components/ProductCard"
+import { Loader } from "../../components/Loader"
 
 import styles from './Home.module.css'
 
 export const Home = () => {
     const [products, setProducts] = useState<Product[]>([])
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState<string | null>(null)
 
     useEffect(() => {
         const fetchProducts = async () => {
-            const data = await getProducts();
-            console.log({data})
-            setProducts(data.data.result)
+            try {
+                setLoading(true)
+                const response = await getProducts()
+
+                const result = response?.data?.result || []
+                setProducts(result)
+            } catch (err) {
+                console.error('Error cargando productos', err)
+                setError('No se pudieron cargar los productos')
+            } finally {
+                setLoading(false)
+            }
         }
-        fetchProducts();
+
+        fetchProducts()
     }, [])
 
     return (
         <main>
-            <h1>Lista de productos</h1>
+            <h1 className={styles.title}>Lista de productos</h1>
+
+            {loading && <Loader />}
+            {error && <p>{error}</p>}
+
+            {!loading && !error && products.length === 0 && (
+                <p>No hay productos disponibles</p>
+            )}
+
             <section className={styles.productGrid}>
-                {
-                    products.map((product) => (
-                        <ProductCard key={product.productId} product={product} />
-                    ))
-                }
+                {products.map((product) => (
+                    <ProductCard 
+                        key={product.productId} 
+                        product={product} 
+                    />
+                ))}
             </section>
         </main>
     )
-    
 }

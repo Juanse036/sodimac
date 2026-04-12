@@ -5,7 +5,7 @@
   grid-template-columns: repeat(1, 1fr);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 360px) {
   .productGrid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -21,4 +21,9 @@
   .productGrid {
     grid-template-columns: repeat(4, 1fr);
   }
+}
+
+.title{
+  font-family: sans-serif;
+  margin-bottom: 50px;
 }

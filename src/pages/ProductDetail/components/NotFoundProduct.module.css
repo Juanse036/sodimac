@@ -1,0 +1,52 @@
+/* Estado para cuando el ID no existe en el JSON */
+.notFoundContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #fcfcfc;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin: 40px auto;
+  max-width: 600px;
+}
+
+.notFoundContainer h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.notFoundContainer p {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+/* Botón de retorno con el estilo Sodimac */
+.backBtn {
+  background-color: #f00; /* Rojo Sodimac */
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, transform 0.1s active;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.backBtn:hover {
+  background-color: #cc0000;
+}
+
+.backBtn:active {
+  transform: scale(0.98);
+}
